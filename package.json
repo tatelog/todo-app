@@ -15,7 +15,8 @@
     "build": "react-scripts build",
     "server": "node server.js",
     "todo": "node cli.js",
-    "mcp": "node mcp-server.js"
+    "mcp": "node mcp-server.js",
+    "vercel-build": "react-scripts build"
   },
   "browserslist": {
     "production": [

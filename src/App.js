@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3001/api/todos';
+const API_URL = process.env.NODE_ENV === 'production' ? '/api/todos' : 'http://localhost:3001/api/todos';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -27,12 +27,12 @@ export default function App() {
   };
 
   const toggleTodo = async (id) => {
-    await fetch(`${API_URL}/${id}/toggle`, { method: 'PATCH' });
+    await fetch(`${API_URL}?id=${id}&action=toggle`, { method: 'PATCH' });
     fetchTodos();
   };
 
   const deleteTodo = async (id) => {
-    await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+    await fetch(`${API_URL}?id=${id}`, { method: 'DELETE' });
     fetchTodos();
   };
 
